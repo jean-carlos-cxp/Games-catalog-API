@@ -1,4 +1,5 @@
 using GamesCatalogAPI.Controllers.V1;
+using GamesCatalogAPI.Middleware;
 using GamesCatalogAPI.Repositories;
 using GamesCatalogAPI.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -62,6 +63,8 @@ namespace GamesCatalogAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "GamesCatalogAPI v1"));
             }
+
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseHttpsRedirection();
 
