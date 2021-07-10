@@ -96,7 +96,7 @@ namespace GamesCatalogAPI.Repositories
 
         public async Task Insert(Game game)
         {
-            var comand = $"insert Jogos (Id, Nome, Produtora, Preco) values ('{game.Id}', '{game.Name}', '{game.Producer}', {game.Preco.ToString().Replace(",", ".")})";
+            var comand = $"insert Jogos (Id, Nome, Produtora, Preco) values ('{game.Id}', '{game.Name}', '{game.Producer}', {game.Price.ToString().Replace(",", ".")})";
 
             await _sqlConnection.OpenAsync();
             SqlCommand sqlCommand = new SqlCommand(comand, _sqlConnection);
