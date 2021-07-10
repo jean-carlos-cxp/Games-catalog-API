@@ -35,7 +35,8 @@ namespace GamesCatalogAPI
                 .AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAd"));
 
             services.AddScoped<IGameService, GameService>();
-            services.AddScoped<IGameRepository, GameRepository>();
+            //services.AddScoped<IGameRepository, GameRepository>();
+            services.AddScoped<IGameRepository, GameSqlServerRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
