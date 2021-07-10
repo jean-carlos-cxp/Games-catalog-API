@@ -1,3 +1,5 @@
+using GamesCatalogAPI.Repositories;
+using GamesCatalogAPI.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -31,6 +33,9 @@ namespace GamesCatalogAPI
         {
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddMicrosoftIdentityWebApi(Configuration.GetSection("AzureAd"));
+
+            services.AddScoped<IGameService, GameService>();
+            services.AddScoped<IGameRepository, GameRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
